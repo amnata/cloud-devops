@@ -5,13 +5,13 @@
 
 ### **Project Description**:
 
-In this project, you will design and develop a reusable **Terraform module** to provision a **Kubernetes cluster** on one of the major cloud platforms: **Google Cloud (GKE), Amazon Web Services (EKS), or Microsoft Azure (AKS)**. This project focuses on applying DevOps best practices, including automation, testing, documentation, and security compliance.
+In this project, you will design and develop a reusable **Terraform module** to provision a **Kubernetes cluster** or **VM instance** on one of the major cloud platforms: **Google Cloud (GKE), Amazon Web Services (EKS), or Microsoft Azure (AKS)**. This project focuses on applying DevOps best practices, including automation, testing, documentation, and security compliance.
 
 ---
 
 ### **Objectives**:
 
-- Develop a modular and reusable Terraform module for deploying a Kubernetes cluster.
+- Develop a modular and reusable Terraform module for deploying a Kubernetes cluster / VM instance.
 - Generate comprehensive documentation for the module using **terraform-docs**.
 - Ensure the security of Terraform configuration with **Trivy**, a vulnerability and misconfiguration scanner.
 - Write and run integration tests using **Terratest** to validate the module functionality.
@@ -22,8 +22,8 @@ In this project, you will design and develop a reusable **Terraform module** to 
 ### **Project Requirements**:
 
 1. **Terraform Module Development**:
-   - Create a structured and reusable module for provisioning a Kubernetes cluster on GKE, EKS, or AKS.
-   - Follow Terraform best practices: variable definitions, outputs, versioning, and backend configuration.
+   - Create a structured and reusable module for provisioning a Kubernetes cluster  on GKE, EKS, or AKS / VM instance.
+   - Follow Terraform best practices: variable definitions, main and outputs,
 
 2. **Documentation with terraform-docs**:
    - Use `terraform-docs` to automatically generate and update documentation from the module's codebase.
