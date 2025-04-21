@@ -13,7 +13,7 @@ Create a basic full-stack app:
 ## 🛠️ Tech Stack
 
 - **Backend**: Node.js, python or other programming language 
-- **Database**: Hosted on Railway if possible (PostgreSQL for example)
+- **Database**: Hosted on Railway if possible (PostgreSQL for example) or mongo Atlas if you use mongoDB
 - **CI/CD**: GitHub Actions
 - **Deployment Platform**: [Railway](https://railway.app)
 
@@ -68,3 +68,5 @@ jobs:
         uses: railwayapp/cli-action@v1
         with:
           railwayToken: ${{ secrets.RAILWAY_TOKEN }}
+```
+Submit your job with this[ Gform: ](https://forms.gle/gG6LZ2xhuCKM3xcN8)

@@ -56,6 +56,7 @@ In this project, you will design and develop a reusable **Terraform module** to 
   - `Trivy`  
 - Test scripts written using `Terratest` in Go.
 - A short presentation or demo showcasing the module, how tests and scans are performed, and the usage of pre-commit.
+- Submit your job with this[ Gform: ](https://forms.gle/gG6LZ2xhuCKM3xcN8)
 
 ---
 
