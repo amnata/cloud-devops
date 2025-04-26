@@ -1,18 +1,21 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | ~> 4.80.0 |
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | n/a |
+| <a name="provider_google"></a> [google](#provider\_google) | ~> 4.80.0 |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allow_public_ip"></a> [allow\_public\_ip](#input\_allow\_public\_ip) | Whether to allow a public IP | `bool` | `true` | no |
-| <a name="input_image_family"></a> [image\_family](#input\_image\_family) | Image family for the VM | `string` | `"ubuntu-2204-lts"` | no |
+| <a name="input_image_family"></a> [image\_family](#input\_image\_family) | Image family for Google  VM | `string` | `"ubuntu-2204-lts"` | no |
 | <a name="input_image_project"></a> [image\_project](#input\_image\_project) | Project containing the VM image | `string` | `"ubuntu-os-cloud"` | no |
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Machine type for the VM instance | `string` | `"e2-medium"` | no |
 | <a name="input_network"></a> [network](#input\_network) | Network for the VM | `string` | `"default"` | no |

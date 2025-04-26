@@ -17,7 +17,7 @@ variable "zone" {
 }
 
 variable "image_family" {
-  description = "Image family for Google cloud VM"
+  description = "Image family for Google  VM"
   type        = string
   default     = "ubuntu-2204-lts" # Ubuntu 22.04 LTS
 }
