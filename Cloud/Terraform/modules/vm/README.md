@@ -16,7 +16,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_allow_public_ip"></a> [allow\_public\_ip](#input\_allow\_public\_ip) | Whether to allow a public IP | `bool` | `true` | no |
 | <a name="input_image_family"></a> [image\_family](#input\_image\_family) | Image family for Google  VM | `string` | `"ubuntu-2204-lts"` | no |
-| <a name="input_image_project"></a> [image\_project](#input\_image\_project) | Project containing the VM image | `string` | `"ubuntu-os-cloud"` | no |
+| <a name="input_image_project"></a> [image\_project](#input\_image\_project) | VM image Project | `string` | `"ubuntu-os-cloud"` | no |
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Machine type for the VM instance | `string` | `"e2-medium"` | no |
 | <a name="input_network"></a> [network](#input\_network) | Network for the VM | `string` | `"default"` | no |
 | <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | Service account email for the VM | `string` | `null` | no |

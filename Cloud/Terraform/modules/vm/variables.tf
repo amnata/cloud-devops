@@ -23,7 +23,7 @@ variable "image_family" {
 }
 
 variable "image_project" {
-  description = "Project containing the VM image"
+  description = " VM image Project"
   type        = string
   default     = "ubuntu-os-cloud" # Ubuntu images project
 }
