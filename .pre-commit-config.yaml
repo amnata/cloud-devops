@@ -11,5 +11,5 @@ repos:
         - "inject"
         - --args=--config=.terraform-docs.yml
       types: [terraform]
-
-#    - id: terraform_trivy
+    - id: terraform_trivy
+      files: ^Cloud/Terraform/modules/vm
