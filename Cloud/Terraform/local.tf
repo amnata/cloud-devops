@@ -1,4 +1,4 @@
 locals {
   project_id = "e-adept"
-  region = "us-central1"
+  region     = "us-central1"
 }

@@ -1,0 +1,15 @@
+formatter: markdown
+
+header-from: main.tf
+
+content: |-
+    {{ .Requirements }}
+    {{ .Providers }}
+    {{ .Inputs }}
+    {{ .Outputs }}
+
+
+
+
+ 
+

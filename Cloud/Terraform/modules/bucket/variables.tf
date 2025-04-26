@@ -5,7 +5,7 @@ variable "project_id" {
 }
 
 variable "region" {
-  description = "The region to deploy resources"
+  description = "The region dd to deploy resources"
   type        = string
   default     = "us-central1"
 }
