@@ -56,6 +56,6 @@ spec:
   - port: 3000
     targetPort: 3000
     name: http
-  type: ClusterIP
+  type: ClusterIP # use port forwarding after deplyment...  kubectl port-forward svc/grafana 3000:3000 -n logging
   selector:
     app: grafana
