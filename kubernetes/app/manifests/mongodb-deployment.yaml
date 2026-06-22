@@ -4,7 +4,7 @@ metadata:
   name: mongodb
   namespace: backend-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mongodb
