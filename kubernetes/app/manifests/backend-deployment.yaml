@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: mbenguosta/backend:v4.0.0
+          image: mbenguosta/backend:v4.1.0
           ports:
             - containerPort: 8000
           env:
@@ -35,7 +35,7 @@ spec:
                   name: mongodb-secret
                   key: mongodb-password
             - name: DATABASE_HOST
-              value: mongodb
+              value: database
             - name: DATABASE_PORT
               value: "27017"
 
