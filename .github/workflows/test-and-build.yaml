@@ -1,0 +1,123 @@
+name: Test & build node App
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  test:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cicd
+    name: lint & units test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Run Unit Tests
+        run: npm test
+
+
+  security:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cicd
+    name: Security Scanning
+    needs: test  
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Trivy
+        run: |
+          sudo apt-get install -y wget
+          TRIVY_VERSION=0.43.0
+          wget "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.deb"
+          sudo dpkg -i "trivy_${TRIVY_VERSION}_Linux-64bit.deb"
+          rm "trivy_${TRIVY_VERSION}_Linux-64bit.deb"
+
+      - name: Run Trivy scan
+        run: trivy fs --exit-code 1 --severity CRITICAL .
+
+      - name: Fail if vulnerabilities found
+        run: |
+          if [ $? -ne 0 ]; then
+            echo "Vulnerabilities found!";
+            exit 1;
+          fi
+
+  dev:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cicd
+    name: Build & push DEV
+    needs: test
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Build
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/docker-app:${{ github.sha }} .
+
+      # Step 3: Log in to dockerHub
+      - name: log in to Docker hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # Step 4: Publish To DockerHub
+      - name: Push Docker image to Docker  hub
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-app:${{ github.sha }}
+
+  prod:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cicd
+    name: Build & push PROD
+    needs: [ security]
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Build
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.PROD_DOCKER_USERNAME }}/docker-app:${{ github.sha }} .
+
+      # Step 3: Log in to dockerHub
+      - name: log in to Docker hub
+        run: echo "${{ secrets.PROD_DOCKER_PASSWORD }}" | docker login -u "${{ secrets.PROD_DOCKER_USERNAME }}" --password-stdin
+
+      # Step 4: Publish To DockerHub
+      - name: Push Docker image to Docker  hub
+        run: docker push ${{ secrets.PROD_DOCKER_USERNAME }}/docker-app:${{ github.sha }}

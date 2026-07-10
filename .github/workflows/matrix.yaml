@@ -1,0 +1,44 @@
+name: Node.js CI and Docker
+
+on:
+  push:
+    branches:
+      - mb
+  pull_request:
+    branches:
+      - mb
+
+jobs:
+  test:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cicd
+    name: Test
+
+    strategy:
+      matrix:
+        environment: [10, 12, 14] 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.environment }}
+
+      - name: Install dependencies
+        run: npm install
+
+      # Conditionally run ESLint only for the 'node 14'
+      - name: Run Lint
+        if: matrix.environment == '14'
+        run: npm run lint
+
+      - name: Run Unit Tests
+        run: npm test
