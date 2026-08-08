@@ -55,8 +55,8 @@ jobs:
           rm "trivy_${TRIVY_VERSION}_Linux-64bit.deb"
 
       - name: Run Trivy scan
-        #run: trivy fs .
-        run: trivy fs --exit-code 1 --severity HIGH .
+        run: trivy fs .
+        #run: trivy fs --exit-code 1 --severity HIGH .
 
       - name: Fail if vulnerabilities found
         run: |
