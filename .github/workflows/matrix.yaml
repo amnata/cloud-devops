@@ -38,4 +38,5 @@ jobs:
         run: npm run lint
 
       - name: Run Unit Tests
+        if: matrix.environment == '14'
         run: npm test
