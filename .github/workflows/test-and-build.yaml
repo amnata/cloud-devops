@@ -34,10 +34,7 @@ jobs:
         run: npm test
 
 
-  # security:
-    
-jobs:
-  build:
+  security:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -68,9 +65,6 @@ jobs:
           fi
 
   dev:
-    
-jobs:
-  build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -95,9 +89,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-app:${{ github.sha }}
 
   prod:
-    
-jobs:
-  build:
     runs-on: ubuntu-latest
     defaults:
       run:
