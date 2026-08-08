@@ -7,10 +7,7 @@ on:
   pull_request:
     branches:
       - mbx
-
-jobs:
-  test:
-    
+  
 jobs:
   build:
     runs-on: ubuntu-latest
