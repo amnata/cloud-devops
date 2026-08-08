@@ -70,7 +70,7 @@ jobs:
       run:
         working-directory: ./cicd
     name: Build & push DEV
-    needs: test
+    needs: build
     steps:
       # Step 1: Check out the repository
       - name: Checkout code
