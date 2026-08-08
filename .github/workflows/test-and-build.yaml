@@ -3,11 +3,10 @@ name: Test & build node App
 on:
   push:
     branches:
-      - main
+      - develop
 
 
-jobs:
-  test:
+
     
 jobs:
   build:
@@ -15,7 +14,7 @@ jobs:
     defaults:
       run:
         working-directory: ./cicd
-    name: lint & units test
+    name: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -35,7 +34,7 @@ jobs:
         run: npm test
 
 
-  security:
+  # security:
     
 jobs:
   build:

@@ -3,7 +3,7 @@ name: Node.js CI and Docker
 on:
   push:
     branches:
-      - develop
+      - xxx
   pull_request:
     branches:
       - mbx
