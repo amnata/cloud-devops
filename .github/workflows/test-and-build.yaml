@@ -40,7 +40,7 @@ jobs:
       run:
         working-directory: ./cicd
     name: Security Scanning
-    needs: test  
+    needs: build  
 
     steps:
       - name: Checkout code
