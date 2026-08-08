@@ -49,7 +49,7 @@ jobs:
       - name: Install Trivy
         run: |
           sudo apt-get install -y wget
-          TRIVY_VERSION=0.43.0
+          TRIVY_VERSION=0.73.0
           wget "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.deb"
           sudo dpkg -i "trivy_${TRIVY_VERSION}_Linux-64bit.deb"
           rm "trivy_${TRIVY_VERSION}_Linux-64bit.deb"
@@ -70,7 +70,7 @@ jobs:
       run:
         working-directory: ./cicd
     name: Build & push DEV
-    needs: build
+    needs: [build, security]
     steps:
       # Step 1: Check out the repository
       - name: Checkout code
