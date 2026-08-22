@@ -8,6 +8,8 @@ content: |-
     {{ .Inputs }}
     {{ .Outputs }}
 
+recursive:
+  enabled: true
 
 
  
