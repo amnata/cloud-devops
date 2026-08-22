@@ -11,7 +11,7 @@ terraform {
 
 # Configure the Google Cloud provider
 provider "google" {
-  credentials = file("service-account-key.json")
+  credentials = file("google-credential.json")
   project     = local.project_id
   region      = local.region
 }

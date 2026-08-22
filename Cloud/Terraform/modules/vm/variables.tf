@@ -35,10 +35,12 @@ variable "network" {
 }
 
 variable "subnet" {
-  description = "Subnet for the VM"
+  description = "VM Subnet"
   type        = string
   default     = "default"
 }
+
+
 
 variable "allow_public_ip" {
   description = "Whether to allow a public IP"
