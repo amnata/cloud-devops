@@ -8,7 +8,7 @@ resource "google_storage_bucket" "bucket" {
   # Optional: Set uniform bucket-level access
   uniform_bucket_level_access = true
 
-  # Optional: Configure versioning
+  # Optional: Configure versioningdd
   versioning {
     enabled = true
   }
