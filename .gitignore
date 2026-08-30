@@ -3,3 +3,9 @@
 *.tfstate
 *.tfstate.*
 .terraform.lock.hcl
+
+# Credentials
+google-credential.json
+service-account-key.json
+*.pem
+*.key
