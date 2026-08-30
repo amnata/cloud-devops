@@ -1,1 +1,5 @@
-kubernetes/app/manifests/minikube-linux-amd64
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
