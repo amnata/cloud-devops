@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ollama
+spec:
+  replicas: {{ .Values.ollama.replicas }}
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+        - name: ollama
+          image: {{ .Values.ollama.image }}
+          ports:
+            - containerPort: {{ .Values.ollama.servicePort }}
+          envFrom:
+            - configMapRef:
+                name: ollama-config
+          resources:
+{{ toYaml .Values.ollama.resources | indent 12 }}
+          volumeMounts:
+            - name: ollama-storage
+              mountPath: /root/.ollama
+          startupProbe:
+            httpGet:
+              path: /api/tags
+              port: {{ .Values.ollama.servicePort }}
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/tags
+              port: {{ .Values.ollama.servicePort }}
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /api/tags
+              port: {{ .Values.ollama.servicePort }}
+            initialDelaySeconds: 15
+            periodSeconds: 30
+      volumes:
+        - name: ollama-storage
+          persistentVolumeClaim:
+            claimName: ollama-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-webui
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: open-webui
+spec:
+  replicas: {{ .Values.webui.replicas }}
+  selector:
+    matchLabels:
+      app: open-webui
+  template:
+    metadata:
+      labels:
+        app: open-webui
+    spec:
+      containers:
+        - name: open-webui
+          image: {{ .Values.webui.image }}
+          ports:
+            - containerPort: {{ .Values.webui.servicePort }}
+          envFrom:
+            - configMapRef:
+                name: webui-config
+          resources:
+{{ toYaml .Values.webui.resources | indent 12 }}
+          volumeMounts:
+            - name: webui-storage
+              mountPath: /app/backend/data
+          startupProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.webui.servicePort }}
+            failureThreshold: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.webui.servicePort }}
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.webui.servicePort }}
+            initialDelaySeconds: 15
+            periodSeconds: 30
+      volumes:
+        - name: webui-storage
+          persistentVolumeClaim:
+            claimName: webui-pvc
