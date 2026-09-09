@@ -9,3 +9,5 @@ google-credential.json
 service-account-key.json
 *.pem
 *.key
+# Google Cloud service account key
+Cloud/Packer/se-key.json

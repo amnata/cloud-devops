@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ollama-config
+  namespace: {{ .Values.namespace }}
+data:
+  OLLAMA_HOST: "0.0.0.0"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webui-config
+  namespace: {{ .Values.namespace }}
+data:
+  OLLAMA_BASE_URL: "http://ollama-service:{{ .Values.ollama.servicePort }}"
