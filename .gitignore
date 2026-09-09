@@ -11,3 +11,5 @@ service-account-key.json
 *.key
 # Google Cloud service account key
 Cloud/Packer/se-key.json
+Cloud/Packer/se-key.json
+*.json
